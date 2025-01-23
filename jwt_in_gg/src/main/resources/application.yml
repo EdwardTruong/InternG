@@ -1,0 +1,45 @@
+spring: 
+ datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/TestUser?serverTimezone=UTC&amp;createDatabaseIfNotExist=true&amp;characterEncoding=UTF-8
+    username: root
+    password: admin123
+    hikari:
+      poolName: feign_client
+      auto-commit: true
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+ data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+    web:
+      pageable:
+        one-indexed-parameters:  true
+        page-parameter: page
+        size-parameter: limit
+ jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MariaDBDialect
+      hibernate.jdbc.time_zone: UTC
+      hibernate.proc.param_null_passing: true
+      hibernate.id.new_generator_mappings: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.generate_statistics: false
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+logging:
+  level:
+    # vn.tcx.gfw: debug
+    org.springframework.security.cas: OFF
+    org.springframework.security: TRACE
+    org.springframework.security.oauth2: TRACE
+    org.springframework.web: debug
+    org.springframework.jdbc.core: TRACE
