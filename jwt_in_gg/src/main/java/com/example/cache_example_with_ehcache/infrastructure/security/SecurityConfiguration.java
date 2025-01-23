@@ -41,16 +41,16 @@ public class SecurityConfiguration {
 	AuthEntryPointJwt unauthorizedHandler;
 
 	// My own
-	@Bean
-	public AuthTokenFilter authenticationJwtTokenFilter() {
-		return new AuthTokenFilter();
-	}
-
-	// Old real object
 	// @Bean
-	// public JWTFilter authenticationJwtTokenFilter() {
-	// return new JWTFilter();
+	// public AuthTokenFilter authenticationJwtTokenFilter() {
+	// return new AuthTokenFilter();
 	// }
+
+	// // Old real object
+	@Bean
+	public JWTFilter authenticationJwtTokenFilter() {
+		return new JWTFilter();
+	}
 
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {

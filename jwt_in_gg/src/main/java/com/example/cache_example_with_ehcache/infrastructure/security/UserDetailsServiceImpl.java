@@ -32,8 +32,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserEntity userEntity = userRepository.findByUsernameAndStatus(username, STATUS.ACTIVE)
 				.orElseThrow(() -> new UserNotFoundException(MESSENGER_NOT_FOUND.USER_NOT_FOUND_EMAIL + username));
-		log.debug("User login and save user's infomations into UserDetailsCustom. !");
-		return UserDetailsCustom.build(userEntity);
+		UserDetailsCustom userloginSuccess = UserDetailsCustom.build(userEntity);
+		log.info("User login and save user's infomations into UserDetailsCustom. with role size {}",
+				userloginSuccess.getAuthorities().size());
+
+		return userloginSuccess;
 	}
 
 }

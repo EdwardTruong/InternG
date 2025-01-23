@@ -15,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ import com.example.cache_example_with_ehcache.domain.repository.RoleRepository;
 import com.example.cache_example_with_ehcache.domain.repository.UserRepository;
 import com.example.cache_example_with_ehcache.domain.service.UserService;
 import com.example.cache_example_with_ehcache.infrastructure.jwt.TokenProvider;
+import com.example.cache_example_with_ehcache.infrastructure.jwt.TokenProviderDuc;
 import com.example.cache_example_with_ehcache.infrastructure.security.UserDetailsCustom;
 
 import io.jsonwebtoken.io.IOException;
@@ -50,6 +52,7 @@ public class UserServiceImpl implements UserService {
     RoleRepository roleRepository;
     AuthenticationManager authenticationManager;
     TokenProvider tokenProvider;
+    TokenProviderDuc tokenProviderDuc;
 
     @Override
     public Optional<UserDto> findById(Long id) {
@@ -92,13 +95,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(LoginRequest loginRequest) throws IOException, UnrecoverableKeyException, KeyStoreException,
             NoSuchAlgorithmException, CertificateException, java.io.IOException, java.io.IOException {
+
         UsernamePasswordAuthenticationToken userTryLogin = new UsernamePasswordAuthenticationToken(
                 loginRequest.getUsername(), loginRequest.getPassword());
+
         Authentication authentication = authenticationManager.authenticate(userTryLogin);
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        String jwt = tokenProvider.generateToken(authentication, true);
+        // String jwt = tokenProvider.generateToken(authentication, true);
+        String jwt = tokenProviderDuc.createToken(authentication, true);
 
         UserDetailsCustom userDetails = (UserDetailsCustom) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())

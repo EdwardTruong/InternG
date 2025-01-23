@@ -4,42 +4,43 @@ import org.springframework.stereotype.Component;
 
 // package vn.tcx.dw.security.jwt;
 
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.stream.Collectors;
 // import javax.annotation.PostConstruct;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.crypto.SecretKey;
+
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+
+import com.example.cache_example_with_ehcache.appilication.constant.ContantUnit.TIME;
 
 // import io.github.jhipster.config.JHipsterProperties;
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Cái này của thằng ku đức đưa. Đang test cái này để xem nó có chạy được ngon
  * không nếu như không sử dụng onePerFilter
  */
 @Component
+@Slf4j
 public class TokenProviderDuc {
 
-    private final Logger log = LoggerFactory.getLogger(TokenProvider.class);
+    // private final Logger log = LoggerFactory.getLogger(TokenProvider.class);
 
     private static final String AUTHORITIES_KEY = "auth";
 
-    private Key key;
+    // private Key key;
 
-    private long tokenValidityInMilliseconds;
+    // private long tokenValidityInMilliseconds;
 
-    private long tokenValidityInMillisecondsForRememberMe;
+    // private long tokenValidityInMillisecondsForRememberMe;
 
     // private final JHipsterProperties jHipsterProperties;
 
@@ -71,6 +72,9 @@ public class TokenProviderDuc {
     // .getTokenValidityInSecondsForRememberMe();
     // }
 
+    SignatureAlgorithm algorithm = SignatureAlgorithm.HS256;
+    SecretKey key = Keys.secretKeyFor(algorithm);
+
     public String createToken(Authentication authentication, boolean rememberMe) {
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -79,15 +83,16 @@ public class TokenProviderDuc {
         long now = (new Date()).getTime();
         Date validity;
         if (rememberMe) {
-            validity = new Date(now + this.tokenValidityInMillisecondsForRememberMe);
+            validity = new Date(now + TIME.REMEMBERME);
         } else {
-            validity = new Date(now + this.tokenValidityInMilliseconds);
+            validity = new Date(now + TIME.EXPIRE_DURATION_JWT);
         }
 
         return Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim(AUTHORITIES_KEY, authorities)
-                .signWith(key, SignatureAlgorithm.HS512)
+                // .signWith(key, SignatureAlgorithm.HS512)
+                .signWith(key)
                 .setExpiration(validity)
                 .compact();
     }
@@ -110,7 +115,7 @@ public class TokenProviderDuc {
 
     // public boolean validateToken(String authToken) {
     // try {
-    // Jwts.parser().setSigningKey(key).parseClaimsJws(authToken);
+    // Jwts.parserBuilder().setSigningKey(key).parseClaimsJws(authToken);
     // return true;
     // } catch (JwtException | IllegalArgumentException e) {
     // log.info("Invalid JWT token.");
@@ -118,6 +123,7 @@ public class TokenProviderDuc {
     // }
     // return false;
     // }
+
     public boolean validateToken(String authToken)
             throws SignatureException,
             NoSuchAlgorithmException, java.io.IOException {

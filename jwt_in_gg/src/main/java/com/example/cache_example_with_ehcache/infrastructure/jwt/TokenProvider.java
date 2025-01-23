@@ -24,6 +24,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class TokenProvider {
 
+    /*
+     * Với phiêm bản cũ thì việc sử dụng SignatureAlgorithm.HS256 bên trong
+     * signWith(key) của jwt sẽ không còn thành công nữa. Sẽ đưa lỗi error(s) wrong
+     * key.
+     * Vì vậy sẽ dùng qua SignatureAlgorithm lấy bộ mã sau đó mới sử dụng key để
+     * auto gennerated
+     */
     // Symmetrical Key Using genarate random key
     SignatureAlgorithm algorithm = SignatureAlgorithm.HS256;
     SecretKey key = Keys.secretKeyFor(algorithm);
@@ -31,6 +38,7 @@ public class TokenProvider {
     // thêm từ code của Đức cho từ dự án cũ :
     private static final String AUTHORITIES_KEY = "auth";
 
+    /** */
     // Using for login // OLD code of jwt symmetrical
     // public String generateJwt(Authentication authentication) {
     // UserDetails userAuthenticated = (UserDetails) authentication.getPrincipal();
@@ -44,16 +52,6 @@ public class TokenProvider {
 
     // generate JWT token
     public String generateToken(Authentication authentication, boolean rememberMe) {
-        // String username = authentication.getName();
-        // Date currentDate = new Date();
-        // Date expireDate = new Date(currentDate.getTime() + TIME.EXPIRE_DURATION_JWT);
-        // String token = Jwts.builder()
-        // .setSubject(username)
-        // .setIssuedAt(new Date())
-        // .setExpiration(expireDate)
-        // .signWith(key)
-        // .compact();
-        // return token;
 
         // mới ở đây.
         String authorities = authentication.getAuthorities().stream()

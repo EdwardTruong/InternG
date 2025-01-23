@@ -18,9 +18,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -47,24 +45,13 @@ public class JWTFilter extends GenericFilterBean {
         log.debug("Token: {}", jwt);
 
         // Của Đức
-        // try {
-        // if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
-        // Authentication authentication = this.tokenProvider.getAuthentication(jwt);
-        // SecurityContextHolder.getContext().setAuthentication(authentication);
-        // }
-        // } catch (SignatureException | NoSuchAlgorithmException | IOException e) {
-        // log.info("Error(s)", e.getMessage());
-        // e.printStackTrace();
-        // }
-
-        // Của mình
         try {
-            if (StringUtils.hasText(jwt) && jwtUtils.validateToken(jwt)) {
-                Authentication authentication = jwtUtils.getAuthentication(jwt);
+            if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+                Authentication authentication = this.tokenProvider.getAuthentication(jwt);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         } catch (SignatureException | NoSuchAlgorithmException | IOException e) {
-            log.info("Error(s)", e.getMessage());
+            log.info("Error(s): {}", e.getMessage());
             e.printStackTrace();
         }
 
