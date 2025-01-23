@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CacheExampleWithEhcacheApplication {
+public class JwtInGG {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CacheExampleWithEhcacheApplication.class, args);
+		SpringApplication.run(JwtInGG.class, args);
 	}
 
 }

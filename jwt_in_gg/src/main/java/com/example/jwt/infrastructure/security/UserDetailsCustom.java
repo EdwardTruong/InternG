@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.infrastructure.security;
+package com.example.jwt.infrastructure.security;
 
 import java.util.Collection;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.cache_example_with_ehcache.domain.model.UserEntity;
+import com.example.jwt.domain.model.UserEntity;
 
 public class UserDetailsCustom implements UserDetails {
 

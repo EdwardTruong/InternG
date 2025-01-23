@@ -1,6 +1,5 @@
 package com.example.cache_example_with_ehcache.infrastructure.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,13 +15,37 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.example.cache_example_with_ehcache.infrastructure.jwt.AuthEntryPointJwt;
-import com.example.cache_example_with_ehcache.infrastructure.jwt.filters.AuthTokenFilter;
-// import com.example.cache_example_with_ehcache.infrastructure.jwt.filters.JWTFilter;
 import com.example.cache_example_with_ehcache.infrastructure.jwt.filters.JWTFilter;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+/**
+ * @Explain : Trong class SecurityConfiguration : sẽ có lớp filter :
+ * 
+ *          1. AuthTokenFilter extends OncePerRequestFilter
+ *          Đảm bảo bộ lọc chỉ được thực thi một lần trong một request (ngay cả
+ *          khi có các forward hoặc include).
+ *          Thường được sử dụng trong Spring Security cho các bộ lọc quan trọng
+ *          như JwtFilter
+ * 
+ * 
+ * 
+ *          2. JWTFilter extends GenericFilterBean (Muốn tích hợp logic của bạn
+ *          vào chuỗi filter của Spring Security mà không cần xử lý các chi tiết
+ *          kỹ thuật phức tạp của Servlet API.)
+ *          Cho phép bộ lọc được gọi nhiều lần trong một request (nếu chuỗi
+ *          filter yêu cầu).
+ *          Đơn giản hơn và linh hoạt.
+ * 
+ *          Muốn dùng 1 trong 2 thì tắt thằng còn lại
+ *          *************************************************************************
+ *          Nhớ sử dụng : SecurityFilterChain HttpSecurity Dòng 108 - 109
+ *          http.authenticationProvider(authenticationProvider());
+ *          http.addFilterBefore(authenticationJwtTokenFilter(),
+ *          UsernamePasswordAuthenticationFilter.class);
+ */
 
 @Configuration
 @EnableMethodSecurity

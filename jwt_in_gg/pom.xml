@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>cache_example_with_ehcache</artifactId>
+	<artifactId>jwt_in_gg</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cache_example_with_ehcache</name>
+	<name>jwt_in_gg</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
