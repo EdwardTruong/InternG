@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.appilication.controller.restcontroller;
+package com.example.jwt.appilication.controller.restcontroller;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.cache_example_with_ehcache.appilication.dto.LoginRequest;
-import com.example.cache_example_with_ehcache.domain.service.UserService;
+import com.example.jwt.appilication.dto.LoginRequest;
+import com.example.jwt.domain.service.UserService;
 
 import jakarta.validation.Valid;
 import lombok.AccessLevel;

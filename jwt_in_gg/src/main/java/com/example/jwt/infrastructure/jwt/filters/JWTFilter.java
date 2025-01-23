@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.infrastructure.jwt.filters;
+package com.example.jwt.infrastructure.jwt.filters;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -9,8 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
-import com.example.cache_example_with_ehcache.infrastructure.jwt.TokenProvider;
-import com.example.cache_example_with_ehcache.infrastructure.jwt.TokenProviderDuc;
+import com.example.jwt.infrastructure.jwt.TokenProvider;
+import com.example.jwt.infrastructure.jwt.TokenProviderDuc;
 
 import io.jsonwebtoken.SignatureException;
 import jakarta.servlet.FilterChain;

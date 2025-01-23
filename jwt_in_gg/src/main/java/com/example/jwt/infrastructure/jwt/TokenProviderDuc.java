@@ -1,6 +1,8 @@
-package com.example.cache_example_with_ehcache.infrastructure.jwt;
+package com.example.jwt.infrastructure.jwt;
 
 import org.springframework.stereotype.Component;
+
+import com.example.jwt.appilication.constant.ContantUnit.TIME;
 
 // package vn.tcx.dw.security.jwt;
 
@@ -16,8 +18,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-
-import com.example.cache_example_with_ehcache.appilication.constant.ContantUnit.TIME;
 
 // import io.github.jhipster.config.JHipsterProperties;
 import io.jsonwebtoken.*;

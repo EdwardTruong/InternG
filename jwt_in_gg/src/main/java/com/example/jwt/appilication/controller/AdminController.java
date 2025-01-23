@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.appilication.controller;
+package com.example.jwt.appilication.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.cache_example_with_ehcache.appilication.dto.UserDto;
-import com.example.cache_example_with_ehcache.appilication.dto.UserRegistert;
-import com.example.cache_example_with_ehcache.domain.service.UserService;
-import com.example.cache_example_with_ehcache.infrastructure.exception.UserNotFoundException;
+import com.example.jwt.appilication.dto.UserDto;
+import com.example.jwt.appilication.dto.UserRegistert;
+import com.example.jwt.domain.service.UserService;
+import com.example.jwt.infrastructure.exception.UserNotFoundException;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

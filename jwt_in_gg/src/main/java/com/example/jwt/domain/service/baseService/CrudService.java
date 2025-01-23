@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.domain.service.baseService;
+package com.example.jwt.domain.service.baseService;
 
 import java.util.List;
 

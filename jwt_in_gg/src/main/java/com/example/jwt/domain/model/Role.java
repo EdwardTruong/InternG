@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.domain.model;
+package com.example.jwt.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,7 +1,7 @@
-package com.example.cache_example_with_ehcache.domain.service;
+package com.example.jwt.domain.service;
 
-import com.example.cache_example_with_ehcache.appilication.utils.ERole;
-import com.example.cache_example_with_ehcache.domain.model.Role;
+import com.example.jwt.appilication.utils.ERole;
+import com.example.jwt.domain.model.Role;
 
 public interface RoleService {
 	Role findByName(ERole name);

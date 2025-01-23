@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.appilication.constant;
+package com.example.jwt.appilication.constant;
 
 import java.util.Arrays;
 import java.util.HashSet;

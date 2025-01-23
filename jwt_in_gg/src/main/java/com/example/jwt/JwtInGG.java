@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache;
+package com.example.jwt;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

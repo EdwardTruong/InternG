@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.appilication.dto;
+package com.example.jwt.appilication.dto;
 
 import java.util.Date;
 import org.springframework.http.HttpStatus;

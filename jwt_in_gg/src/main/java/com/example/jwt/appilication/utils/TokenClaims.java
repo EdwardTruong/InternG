@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.appilication.utils;
+package com.example.jwt.appilication.utils;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.infrastructure.security;
+package com.example.jwt.infrastructure.security;
 
 // import com.example.cache_example_with_ehcache.infrastructure.jwt.JWTFilter;
 // import

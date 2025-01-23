@@ -1,15 +1,15 @@
-package com.example.cache_example_with_ehcache.infrastructure.security;
+package com.example.jwt.infrastructure.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.cache_example_with_ehcache.appilication.constant.ContantUnit.MESSENGER_NOT_FOUND;
-import com.example.cache_example_with_ehcache.appilication.constant.ContantUnit.STATUS;
-import com.example.cache_example_with_ehcache.domain.model.UserEntity;
-import com.example.cache_example_with_ehcache.domain.repository.UserRepository;
-import com.example.cache_example_with_ehcache.infrastructure.exception.UserNotFoundException;
+import com.example.jwt.appilication.constant.ContantUnit.MESSENGER_NOT_FOUND;
+import com.example.jwt.appilication.constant.ContantUnit.STATUS;
+import com.example.jwt.domain.model.UserEntity;
+import com.example.jwt.domain.repository.UserRepository;
+import com.example.jwt.infrastructure.exception.UserNotFoundException;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

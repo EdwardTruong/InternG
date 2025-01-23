@@ -1,14 +1,14 @@
-package com.example.cache_example_with_ehcache.domain.service.impl;
+package com.example.jwt.domain.service.impl;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.example.cache_example_with_ehcache.appilication.constant.ContantUnit.MESSENGER_NOT_FOUND;
-import com.example.cache_example_with_ehcache.appilication.utils.ERole;
-import com.example.cache_example_with_ehcache.domain.model.Role;
-import com.example.cache_example_with_ehcache.domain.repository.RoleRepository;
-import com.example.cache_example_with_ehcache.domain.service.RoleService;
+import com.example.jwt.appilication.constant.ContantUnit.MESSENGER_NOT_FOUND;
+import com.example.jwt.appilication.utils.ERole;
+import com.example.jwt.domain.model.Role;
+import com.example.jwt.domain.repository.RoleRepository;
+import com.example.jwt.domain.service.RoleService;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

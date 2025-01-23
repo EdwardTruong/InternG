@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.infrastructure.exception;
+package com.example.jwt.infrastructure.exception;
 
 import org.springframework.security.core.AuthenticationException;
 

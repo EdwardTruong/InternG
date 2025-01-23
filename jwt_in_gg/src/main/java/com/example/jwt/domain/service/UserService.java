@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.domain.service;
+package com.example.jwt.domain.service;
 
 import java.io.IOException;
 import java.security.KeyStoreException;
@@ -7,9 +7,9 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 import java.util.Optional;
 
-import com.example.cache_example_with_ehcache.appilication.dto.LoginRequest;
-import com.example.cache_example_with_ehcache.appilication.dto.UserDto;
-import com.example.cache_example_with_ehcache.appilication.dto.UserRegistert;
+import com.example.jwt.appilication.dto.LoginRequest;
+import com.example.jwt.appilication.dto.UserDto;
+import com.example.jwt.appilication.dto.UserRegistert;
 
 public interface UserService {
     // Optional<UserDto> findById(Long id);

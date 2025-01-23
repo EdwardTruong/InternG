@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.appilication.dto;
+package com.example.jwt.appilication.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

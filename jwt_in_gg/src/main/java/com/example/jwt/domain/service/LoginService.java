@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.domain.service;
+package com.example.jwt.domain.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 
-import com.example.cache_example_with_ehcache.appilication.dto.LoginRequest;
+import com.example.jwt.appilication.dto.LoginRequest;
 
 /**
  * Service interface named {@link LoginService} for handling user login

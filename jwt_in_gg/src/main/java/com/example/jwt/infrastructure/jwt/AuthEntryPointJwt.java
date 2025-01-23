@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.infrastructure.jwt;
+package com.example.jwt.infrastructure.jwt;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -13,8 +13,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-import com.example.cache_example_with_ehcache.appilication.constant.ContantUnit.MESSENGER_ERROR;
-import com.example.cache_example_with_ehcache.appilication.dto.HttpResponse;
+import com.example.jwt.appilication.constant.ContantUnit.MESSENGER_ERROR;
+import com.example.jwt.appilication.dto.HttpResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.appilication.controller.restcontroller;
+package com.example.jwt.appilication.controller.restcontroller;
 
 import org.springframework.web.bind.annotation.RestController;
 

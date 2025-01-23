@@ -1,4 +1,4 @@
-package com.example.cache_example_with_ehcache.infrastructure.jwt;
+package com.example.jwt.infrastructure.jwt;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
@@ -13,7 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
-import com.example.cache_example_with_ehcache.appilication.constant.ContantUnit.TIME;
+import com.example.jwt.appilication.constant.ContantUnit.TIME;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
