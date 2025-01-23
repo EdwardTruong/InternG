@@ -91,7 +91,7 @@ public class UserEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     @JsonBackReference
     @Builder.Default
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     Set<Role> roles = new HashSet<>();
 
 }
