@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.util.stream.Collectors;
 // import javax.annotation.PostConstruct;
@@ -107,13 +108,30 @@ public class TokenProviderDuc {
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }
 
-    public boolean validateToken(String authToken) {
+    // public boolean validateToken(String authToken) {
+    // try {
+    // Jwts.parser().setSigningKey(key).parseClaimsJws(authToken);
+    // return true;
+    // } catch (JwtException | IllegalArgumentException e) {
+    // log.info("Invalid JWT token.");
+    // log.trace("Invalid JWT token trace.", e);
+    // }
+    // return false;
+    // }
+    public boolean validateToken(String authToken)
+            throws SignatureException,
+            NoSuchAlgorithmException, java.io.IOException {
         try {
-            Jwts.parser().setSigningKey(key).parseClaimsJws(authToken);
+            Jwts.parserBuilder().setSigningKey(key).build().parse(authToken);
             return true;
-        } catch (JwtException | IllegalArgumentException e) {
-            log.info("Invalid JWT token.");
-            log.trace("Invalid JWT token trace.", e);
+        } catch (MalformedJwtException e) {
+            log.error("Invalid JWT token: {}", e.getMessage());
+        } catch (ExpiredJwtException e) {
+            log.error("JWT token is expired: {}", e.getMessage());
+        } catch (UnsupportedJwtException e) {
+            log.error("JWT token is unsupported: {}", e.getMessage());
+        } catch (IllegalArgumentException e) {
+            log.error("JWT claims string is empty: {}", e.getMessage());
         }
         return false;
     }

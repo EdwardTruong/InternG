@@ -99,7 +99,7 @@ public class TokenProvider {
                 .parseClaimsJws(toke).getBody().getSubject();
     }
 
-    public boolean validateJwtToken(String authToken)
+    public boolean validateToken(String authToken)
             throws SignatureException,
             NoSuchAlgorithmException, java.io.IOException {
         try {

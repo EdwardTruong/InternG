@@ -1,6 +1,7 @@
 package com.example.cache_example_with_ehcache.infrastructure.jwt.filters;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import org.springframework.web.filter.GenericFilterBean;
 import com.example.cache_example_with_ehcache.infrastructure.jwt.TokenProvider;
 import com.example.cache_example_with_ehcache.infrastructure.jwt.TokenProviderDuc;
 
+import io.jsonwebtoken.SignatureException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
@@ -44,13 +46,26 @@ public class JWTFilter extends GenericFilterBean {
         String jwt = resolveToken(httpServletRequest);
         log.debug("Token: {}", jwt);
 
+        // Của Đức
+        // try {
         // if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
         // Authentication authentication = this.tokenProvider.getAuthentication(jwt);
         // SecurityContextHolder.getContext().setAuthentication(authentication);
         // }
-        if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
-            Authentication authentication = tokenProvider.getAuthentication(jwt);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        // } catch (SignatureException | NoSuchAlgorithmException | IOException e) {
+        // log.info("Error(s)", e.getMessage());
+        // e.printStackTrace();
+        // }
+
+        // Của mình
+        try {
+            if (StringUtils.hasText(jwt) && jwtUtils.validateToken(jwt)) {
+                Authentication authentication = jwtUtils.getAuthentication(jwt);
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+        } catch (SignatureException | NoSuchAlgorithmException | IOException e) {
+            log.info("Error(s)", e.getMessage());
+            e.printStackTrace();
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
